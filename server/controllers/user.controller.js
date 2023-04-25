@@ -36,8 +36,9 @@ module.exports = {
                 
                 if (passwordsMatch) {
                     const userToken = jwt.sign({ _id: user._id, email: user.email }, secret, { expiresIn: '2h' })
+                    console.log(userToken);
                     // Sending back the logged in user 
-                    res.cookie('userToken', userToken, { httpOnly: true, maxAge: 2 * 60 * 60 * 1000 }).status(201).json({ message: 'User logged in', user: user })
+                    res.cookie('userToken', userToken, { httpOnly: true, maxAge: 2 * 60 * 60 * 1000 }).status(201).json({ message: 'User logged in', user: user, userToken:userToken })
                 } else {
                     res.status(400).json({ message: 'Invalid Email/Password' })
                 }
