@@ -7,18 +7,18 @@ const Sidebar = (props) => {
     return (
         <List color={"white"} fontSize={"1.2em"} spacing={4}>
             <ListItem>
-                <NavLink to={"/"}>
+                <NavLink to={"/dashboard"}>
                     <ListIcon as={CalendarIcon} />
                     Dashboard
                 </NavLink>
             </ListItem>
             <ListItem>
                 <ListIcon as={EditIcon} />
-                <NavLink to={"/newTask"}>New Task</NavLink>
+                <NavLink to={"/dashboard/newTask"}>New Task</NavLink>
             </ListItem>
             <ListItem>
                 <ListIcon as={AtSignIcon} />
-                <NavLink to={"/profile"}>Profile</NavLink>
+                <NavLink to={"/dashboard/profile"}>Profile</NavLink>
             </ListItem>
         </List>
     );

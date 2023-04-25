@@ -5,14 +5,18 @@ import RootLayout from './layouts/RootLayout';
 import Dashboard from './components/Dashboard';
 import { useState } from 'react';
 import TodoForm from './components/TodoForm';
+import Login from './components/Login';
+import Register from './components/Register';
 function App() {
   const [darkMode, setDarkMode] = useState('white')
   return (
     <>
       <Routes>
         <Route path='/' element={<RootLayout darkMode={darkMode} setDarkMode={setDarkMode} />}>
-          <Route index element={<Dashboard/>}/>
-          <Route path='/newTask' element={<TodoForm />} />
+          <Route index element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/dashboard/newTask' element={<TodoForm />} />
           {/* <Route path='/newTask' element={<TodoForm/>}/> */}
         </Route>
       </Routes>

@@ -10,4 +10,6 @@ app.use(express.json(), express.urlencoded({ extended: true }));
 app.use(cors({credentials:true, origin:'http://127.0.0.1:5173'}))
 app.use(cookieParser())
 require('./routes/TodoRoutes')(app)
+require('./routes/userRoutes')(app)
+
 app.listen(8000, () => console.log("The server is all fired up on port 8000"));
