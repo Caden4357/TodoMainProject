@@ -1,9 +1,13 @@
 import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading, Icon, IconButton, SimpleGrid, Text } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { WarningTwoIcon } from '@chakra-ui/icons'
 import axios from 'axios';
+import { userContext } from '../context/UserContext';
 const Dashboard = (props) => {
+    const {loggedInUser, setLoggedInUser} = useContext(userContext)
+    const uuid = window.localStorage.getItem('uuid')
+
     const [tasks, setTasks] = useState([])
     useEffect(() => {
         axios.get('http://localhost:8000/api/allTodos')
@@ -28,6 +32,20 @@ const Dashboard = (props) => {
                 console.log(err); 
             })
     }
+
+    useEffect(() => {
+        if(!uuid) return 
+        else{
+            axios.get(`http://localhost:8000/api/loggedInUser/${uuid}`)
+                .then((res) => {
+                    setLoggedInUser(res.data)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    }, [uuid])
+
     return (
         <SimpleGrid p={'5px'} spacing={4} templateColumns={'repeat(auto-fill, minmax(300px, 1fr))'}>
             {/* <Box bg={'red.300'} h={'200px'} border={'1px solid'}>1</Box> */}

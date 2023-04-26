@@ -1,7 +1,7 @@
 import { Box, FormControl, FormLabel,Heading, Input, Button } from '@chakra-ui/react';
 import axios from 'axios';
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Login = (props) => {
     const navigate = useNavigate()
     const [login, setLogin] = useState({
@@ -37,7 +37,7 @@ const Login = (props) => {
                     <Input type='password' value={login.password} name='password' onChange={changeHandler} />
                 </FormControl>
                 <Button w={'100%'} colorScheme='green' mt={'15px'} type='submit'>Login</Button>
-
+                <Link to={'/register'}>Dont have an account? Click here to sign up</Link>
             </form>
         </Box>
 )}

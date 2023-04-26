@@ -12,14 +12,16 @@ function App() {
   const [darkMode, setDarkMode] = useState('white')
   return (
     <>
+    <UserProvider>
       <Routes>
-          <Route path='/' element={<UserProvider> <RootLayout darkMode={darkMode} setDarkMode={setDarkMode} /> </UserProvider>}>
-            <Route index element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
-            <Route path='/dashboard' element={<Dashboard/>}/>
-            <Route path='/dashboard/newTask' element={<TodoForm />} />
-          </Route>
+        <Route index element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/' element={<RootLayout darkMode={darkMode} setDarkMode={setDarkMode} />}>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/dashboard/newTask' element={<TodoForm />} />
+        </Route>
       </Routes>
+    </UserProvider>
     </>
 
   )

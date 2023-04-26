@@ -51,6 +51,16 @@ module.exports = {
             res.status(400).json({ error: err })
         }
     },
+    getLoggedInUser: async (req, res) => {
+        try{
+            const user = await User.findOne({_id: req.params.id})
+            console.log(user);
+            res.status(200).json(user)
+        }
+        catch(err){
+            res.status(400).json({ error: err })
+        }
+    },
     logout: (req, res) => {
         res.clearCookie('userToken').json({message:'User is logged out'})
         // res.sendStatus(200).json({message:'User is logged out'});
