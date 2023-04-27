@@ -25,7 +25,6 @@ const Navbar = (props) => {
     return (
         <Flex 
         as={'nav'} 
-        // borderBottom={'1px solid gray'} 
         p={'10px'} 
         align={'center'} 
         bg={'gray.200'}

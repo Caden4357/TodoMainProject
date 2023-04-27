@@ -1,9 +1,11 @@
 const Todo = require('../models/todoModel');
-
+const jwt = require('jsonwebtoken');
 module.exports = {
     getAllTodos: async (req, res) => {
         try{
-            const allTodos = await Todo.find({});
+            const decodedJwt = jwt.decode(req.cookies.userToken, {complete:true});
+            const username = decodedJwt.payload.username
+            const allTodos = await Todo.find({username:username}).sort({priority:'desc'});
             res.status(200).json(allTodos);
         }
         catch(err){
@@ -12,7 +14,9 @@ module.exports = {
     },
     postTodo: async (req, res) => {
         try{
-            const newTodo = await Todo.create(req.body);
+            const decodedJwt = jwt.decode(req.cookies.userToken, {complete:true});
+            const todo = {...req.body, username:decodedJwt.payload.username}
+            const newTodo = await Todo.create(todo);
             res.status(201).json(newTodo);
         }
         catch(err){

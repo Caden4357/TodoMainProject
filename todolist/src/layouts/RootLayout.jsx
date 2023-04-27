@@ -9,7 +9,7 @@ const RootLayout = (props) => {
     return (
         // <></>
         //  if I remove templateColumns its a little more responsive but I dont like that solution
-        <Grid templateColumns={"repeat(6, 1fr)"} bg={darkMode} width={'100%'}>
+        <Grid  bg={darkMode} width={'100%'}>
             <GridItem colSpan={{ base: 6 }}>
                 <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
             </GridItem>

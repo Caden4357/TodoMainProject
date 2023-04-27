@@ -18,6 +18,10 @@ const TodoSchema = new mongoose.Schema({
     reaccuring:{
         type:Boolean,
         required:[true, 'This field is required']
+    },
+    username:{
+        type: String,
+        required:[true, 'must have a username']
     }
 }, {timestamps:true})
 

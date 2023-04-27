@@ -39,9 +39,9 @@ const TodoForm = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         console.log('HERE');
-        axios.post('http://localhost:8000/api/newTodo', todo)
+        axios.post('http://localhost:8000/api/newTodo', todo, {withCredentials:true})
             .then((res) => {
-                navigate('/')
+                navigate('/dashboard')
             })
             .catch((err) => {
                 console.log(err);
